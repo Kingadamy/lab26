@@ -195,6 +195,8 @@ int main() {
     return 0;
 }
 
+// milestone 1 complete
+
 /* syntax examples:
 auto start = high_resolution_clock::now()
 auto end = high_resolution_clock::now()
