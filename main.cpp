@@ -202,6 +202,10 @@ int main() {
    // create a 3d array to store the average results
     long long results[numSimulations][numOperations][numStructures];
 
+    // the first dimenstion will have the number of the simulation we are runnnign
+    // dimenson two will have the type of operation
+    // dimension three will be the data structure
+
     // store results in the array so we have to run them first
     for (int sim = 0; sim < numSimulations; ++sim) {
     
