@@ -179,6 +179,15 @@ struct mainResults {
         cout << "Delete\t\t" << (long long)deletes.vectorTime << "\t\t" << (long long)deletes.listTime << "\t\t" << (long long)deletes.setTime << endl;
 }
 
+// I want to create an easier way to read array data
+
+mainResults createResults(long long results[numSimulations][numOperations][numStructures]) {
+    mainResults r;
+    r.vectorTime = results[sim][startOp][0];
+    r.listTime = results[sim][startOp][1];
+    r.setTime = results[sim][startOp][2];
+}
+
 
 
 
@@ -205,47 +214,16 @@ int main() {
         mainResults insertResults = insertingRace(data);
         mainResults deleteResults = deletingRace(data);
 
-        // now store the results in the array
-
-        // reading results
-        results[sim][0][0] = readResults.vectorTime;
-        results[sim][0][1] = readResults.listTime;
-        results[sim][0][2] = readResults.setTime;
-
-        // sorting results use 1 since it's second in the array
-        results[sim][1][0] = sortResults.vectorTime;
-        results[sim][1][1] = sortResults.listTime;
-        results[sim][1][2] = sortResults.setTime;
-
-        // insert results
-        results[sim][2][0] = insertResults.vectorTime;
-        results[sim][2][1] = insertResults.listTime;
-        results[sim][2][2] = insertResults.setTime;
-
-        // delete results
-        results[sim][3][0] = deleteResults.vectorTime;
-        results[sim][3][1] = deleteResults.listTime;
-        results[sim][3][2] = deleteResults.setTime;
-
-        // output the tests ran
-        cout << "\nSimlations completed: " << endl;
-        cout << "Operation\tVector\tList\tSet" << endl;
-        cout << "Read\t\t" << results[0][0][0] << "\t\t" << results[0][0][1] << "\t\t" << results[0][0][2] << endl;
-        cout << "Sort\t\t" << results[0][1][0] << "\t\t" << results[0][1][1] << "\t\t" << results[0][1][2] << endl;
-        cout << "Insert\t\t" << results[0][2][0] << "\t\t" << results[0][2][1] << "\t\t" << results[0][2][2] << endl;
-        cout << "Delete\t\t" << results[0][3][0] << "\t\t" << results[0][3][1] << "\t\t" << results[0][3][2] << endl;
-    
-    }
+        mainResults races[4] = {readResults}
 
 
-   
+
     // display the results
     displayResults(readResults, sortResults, insertResults, deleteResults);
-
     return 0;
 }
+}
 
-// milestone 1 complete
 
 /* syntax examples:
 auto start = high_resolution_clock::now()
