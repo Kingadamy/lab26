@@ -226,6 +226,46 @@ int main() {
         }
     }
 
+    // Now we need to create a 2d array to store the sum of all simulations
+    long long  totalTimes[numOperations][numStructures];
+
+    // loop thru the siumulations so we can add times to the function
+    for (int sim = 0; sim < numSimulations; ++sim) {
+        for (int op = 0; op < numOperations; ++op) {
+            for (int struc = 0; struc < numStructures; ++struc) {
+                // Add the time from this sim to the total
+                totalTimes[op][struc] += results[sim][op][struc];
+            }
+        }
+    } 
+
+    // now we find the averages by dividing by numSimulations (15)
+
+    mainResults avgRead = {
+        totalTimes[0][0] / numSimulations, 
+        totalTimes[0][1] / numSimulations,         
+        totalTimes[0][2] / numSimulations     
+     };
+
+    mainResults avgSort = {
+        totalTimes[1][0] / numSimulations, 
+        totalTimes[1][1] / numSimulations,         
+        totalTimes[1][2] / numSimulations  
+    };
+
+    mainResults avgInsert = {
+        totalTimes[2][0] / numSimulations,
+        totalTimes[2][1] / numSimulations,
+        totalTimes[2][2] / numSimulations
+    };
+
+    mainResults avgDelete = {
+        totalTimes[3][0] / numSimulations,
+        totalTimes[3][1] / numSimulations,
+        totalTimes[3][2] / numSimulations
+    };
+
+
 
     // display the results   
     cout << "\nTest Results: " << endl;
@@ -239,7 +279,7 @@ int main() {
     return 0;
 }
 
-// no edits were made was taking a break
+// I am stepping away from my work for a bit and will resume later on. Hence why there is a break in committing for 10 mins.
 
 
 /* syntax examples:
