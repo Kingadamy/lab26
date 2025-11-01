@@ -279,8 +279,7 @@ int main() {
     return 0;
 }
 
-// I am stepping away from my work for a bit and will resume later on. Hence why there is a break in committing for 10 mins.
-
+// im back
 
 /* syntax examples:
 auto start = high_resolution_clock::now()
