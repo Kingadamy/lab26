@@ -214,15 +214,30 @@ int main() {
         mainResults insertResults = insertingRace(data);
         mainResults deleteResults = deletingRace(data);
 
-        mainResults races[4] = {readResults}
+        mainResults races[4] = {readResults, sortResults, insertResults, deleteResults};
+
+    // for loop for storing results into array
+     for (int op = 0; op < numOperations; op++) {
+            results[sim][op][0] = races[op].vectorTime;
+            results[sim][op][1] = races[op].listTime;
+            results[sim][op][2] = races[op].setTime;
+
+        }
+    }
 
 
+    // display the results   
+    cout << "\nTest Results: " << endl;
+    displayResults(
+        createResults(results, 0, 0), //read
+        createResults(results, 0, 0), //sort
+        createResults(results, 0, 0), //insert
+        createResults(results, 0, 0), //delete
+    );
 
-    // display the results
-    displayResults(readResults, sortResults, insertResults, deleteResults);
     return 0;
 }
-}
+
 
 
 /* syntax examples:
