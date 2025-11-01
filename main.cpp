@@ -12,6 +12,11 @@ using namespace std;
 // use chrono script for timing from canvas
 using namespace std::chrono;
 
+// add how many times we will be running the program to get average times
+const int numSimulations = 15; // run 15 times
+const int numOperations = 4; // 4 operations: read, sort, insert, delete
+const int numStructures = 3; // 3 data structures: vector, list, set
+
 // first we create a struct to hold our results
 struct mainResults {
     long long vectorTime;
@@ -187,6 +192,36 @@ int main() {
    mainResults sortResults = sortingRace(data);
    mainResults insertResults = insertingRace(data);
    mainResults deleteResults = deletingRace(data);
+
+   // create a 3d array to store the average results
+    int results[numSimulations][numOperations][numStructures];
+
+    // store results in the array so we have to run them first
+    for (int sim = 0; sim < numSimulations; ++sim) {
+        
+        // run the races
+        mainResults readResults = readingRace(data);
+        mainResults sortResults = sortingRace(data);
+        mainResults insertResults = insertingRace(data);
+        mainResults deleteResults = deletingRace(data);
+
+        // now store the results in the array
+
+        // reading results
+        results[sim][0][0] = readResults.vectorTime;
+        results[sim][0][1] = readResults.listTime;
+        results[sim][0][2] = readResults.setTime;
+
+        // sorting results use 1 since it's second in the array
+        results[sim][1][0] = sortResults.vectorTime;
+        results[sim][1][1] = sortResults.listTime;
+        results[sim][1][2] = sortResults.setTime;
+
+        // insert results
+        results[sim][2][0] = insertResults.vectorTime;
+
+    }
+
 
    
     // display the results
