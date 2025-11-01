@@ -181,11 +181,13 @@ struct mainResults {
 
 // I want to create an easier way to read array data
 
-mainResults createResults(long long results[numSimulations][numOperations][numStructures]) {
+mainResults createResults(long long results[numSimulations][numOperations][numStructures], int sim, int op) {
     mainResults r;
-    r.vectorTime = results[sim][startOp][0];
-    r.listTime = results[sim][startOp][1];
-    r.setTime = results[sim][startOp][2];
+    r.vectorTime = results[sim][op][0];
+    r.listTime = results[sim][op][1];
+    r.setTime = results[sim][op][2];
+
+    return r;
 }
 
 
@@ -196,25 +198,20 @@ int main() {
     // read data from file
     vector<string> data = readStringsFromFile("codes.txt");
 
-    // run the races now
-   mainResults readResults = readingRace(data);
-   mainResults sortResults = sortingRace(data);
-   mainResults insertResults = insertingRace(data);
-   mainResults deleteResults = deletingRace(data);
 
    // create a 3d array to store the average results
-    int results[numSimulations][numOperations][numStructures];
+    long long results[numSimulations][numOperations][numStructures];
 
     // store results in the array so we have to run them first
     for (int sim = 0; sim < numSimulations; ++sim) {
+    
+    mainResults readResults = readingRace(data);
+    mainResults sortResults = sortingRace(data);
+    mainResults insertResults = insertingRace(data);
+    mainResults deleteResults = deletingRace(data);
         
-        // run the races
-        mainResults readResults = readingRace(data);
-        mainResults sortResults = sortingRace(data);
-        mainResults insertResults = insertingRace(data);
-        mainResults deleteResults = deletingRace(data);
 
-        mainResults races[4] = {readResults, sortResults, insertResults, deleteResults};
+     mainResults races[4] = {readResults, sortResults, insertResults, deleteResults};
 
     // for loop for storing results into array
      for (int op = 0; op < numOperations; op++) {
@@ -230,9 +227,9 @@ int main() {
     cout << "\nTest Results: " << endl;
     displayResults(
         createResults(results, 0, 0), //read
-        createResults(results, 0, 0), //sort
-        createResults(results, 0, 0), //insert
-        createResults(results, 0, 0), //delete
+        createResults(results, 0, 1), //sort
+        createResults(results, 0, 2), //insert
+        createResults(results, 0, 3) //delete
     );
 
     return 0;
