@@ -219,7 +219,22 @@ int main() {
 
         // insert results
         results[sim][2][0] = insertResults.vectorTime;
+        results[sim][2][1] = insertResults.listTime;
+        results[sim][2][2] = insertResults.setTime;
 
+        // delete results
+        results[sim][3][0] = deleteResults.vectorTime;
+        results[sim][3][1] = deleteResults.listTime;
+        results[sim][3][2] = deleteResults.setTime;
+
+        // output the tests ran
+        cout << "\nSimlations completed: " << endl;
+        cout << "Operation\tVector\tList\tSet" << endl;
+        cout << "Read\t\t" << results[0][0][0] << "\t\t" << results[0][0][1] << "\t\t" << results[0][0][2] << endl;
+        cout << "Sort\t\t" << results[0][1][0] << "\t\t" << results[0][1][1] << "\t\t" << results[0][1][2] << endl;
+        cout << "Insert\t\t" << results[0][2][0] << "\t\t" << results[0][2][1] << "\t\t" << results[0][2][2] << endl;
+        cout << "Delete\t\t" << results[0][3][0] << "\t\t" << results[0][3][1] << "\t\t" << results[0][3][2] << endl;
+    
     }
 
 
