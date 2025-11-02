@@ -279,7 +279,7 @@ int main() {
     return 0;
 }
 
-// completed milestone 3
+// completed milestone 3!
 
 /* syntax examples:
 auto start = high_resolution_clock::now()
