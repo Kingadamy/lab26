@@ -91,7 +91,7 @@ struct mainResults {
         start = high_resolution_clock::now();
 
         end = high_resolution_clock::now();
-        results.setTime =  - 1; // already sorted
+        results.setTime =  - 0; // already sorted
 
         return results;
 
@@ -227,7 +227,7 @@ int main() {
     }
 
     // Now we need to create a 2d array to store the sum of all simulations
-    long long  totalTimes[numOperations][numStructures];
+    long long  totalTimes[numOperations][numStructures] = {0};
 
     // loop thru the siumulations so we can add times to the function
     for (int sim = 0; sim < numSimulations; ++sim) {
@@ -268,18 +268,18 @@ int main() {
 
 
     // display the results   
-    cout << "\nTest Results: " << endl;
+    cout << "\nNumber of simulations: " << numSimulations << endl;
     displayResults(
-        createResults(results, 0, 0), //read
-        createResults(results, 0, 1), //sort
-        createResults(results, 0, 2), //insert
-        createResults(results, 0, 3) //delete
+        avgRead,
+        avgSort,
+        avgInsert,
+        avgDelete
     );
 
     return 0;
 }
 
-// im back
+
 
 /* syntax examples:
 auto start = high_resolution_clock::now()
