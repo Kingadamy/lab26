@@ -179,18 +179,8 @@ struct mainResults {
         cout << "Delete\t\t" << (long long)deletes.vectorTime << "\t\t" << (long long)deletes.listTime << "\t\t" << (long long)deletes.setTime << endl;
 }
 
-// I want to create an easier way to read array data
 
-mainResults createResults(long long results[numSimulations][numOperations][numStructures], int sim, int op) {
-    mainResults r;
-    r.vectorTime = results[sim][op][0];
-    r.listTime = results[sim][op][1];
-    r.setTime = results[sim][op][2];
-
-    return r;
-}
-
-
+// I dont use this function anymore so I can delete this as part of milstone 4 (createResults)
 
 
 int main() {
@@ -279,7 +269,7 @@ int main() {
     return 0;
 }
 
-// completed milestone 3!
+// completed milestone 4!
 
 /* syntax examples:
 auto start = high_resolution_clock::now()
